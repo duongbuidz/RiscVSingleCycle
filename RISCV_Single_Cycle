@@ -26,9 +26,9 @@ module risc_v_single_cycle (
     PCAdder PCAdder(.PC_in(PC_Out),
                     .PC_plus4(PC_plus4));
     NextPCSel NextPCSel(.PC_plus4(PC_plus4), 
-                        .PC_branch(alu_out), // Dùng alu_out thay vì BranchAdder
+                        .PC_branch(alu_out), // DÃ¹ng alu_out thay vÃ¬ BranchAdder
                         .Branch(Branch),
-                        .Jump(Jump), // Thêm tín hi?u Jump cho JAL/JALR
+                        .Jump(Jump), // ThÃªm tÃ­n hi?u Jump cho JAL/JALR
                         .branch_taken(branch_taken),
                         .next_PC(next_PC));
     IMEM IMEM(.clk(clk),
@@ -43,7 +43,7 @@ module risc_v_single_cycle (
                             .MemRead(MemRead),
                             .ResultSrc(ResultSrc),
                             .Branch(Branch),
-                            .Jump(Jump), // Thêm Jump
+                            .Jump(Jump), // ThÃªm Jump
                             .ALUOp(ALUOp),
                             .imm_sel(imm_sel));
     RegisterFile reg_unit(.clk(clk),
@@ -63,7 +63,7 @@ module risc_v_single_cycle (
                           .funct7(instruction[31:25]),
                           .op(instruction[6:0]),
                           .ALUControl(ALUControl));
-    ALU ALU(.A(A), // Dùng dataA (rs1) ho?c PC cho JAL/Branch
+    ALU ALU(.A(A), // DÃ¹ng dataA (rs1) ho?c PC cho JAL/Branch
             .B(B), 
             .ALUControl(ALUControl), 
             .alu_out(alu_out));
