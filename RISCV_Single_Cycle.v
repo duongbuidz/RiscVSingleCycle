@@ -58,6 +58,8 @@ module RISCV_Single_Cycle (
     ImmGen ImmGen(.instruction(instruction),
                   .imm_sel(imm_sel),
                   .imm_ext(imm_ext));
+    reg[31:0] Instruction_out_top;
+    assign Instruction_out_top = instruction;
     ALUControl ALU_Control(.ALUOp(ALUOp),
                           .funct3(instruction[14:12]),
                           .funct7(instruction[31:25]),
@@ -79,7 +81,7 @@ module RISCV_Single_Cycle (
               .address(alu_out[31:2]), // Byte-address to word-address
               .write_data(dataB), 
               .read_data(read_data)); */
-    DMEM DMEM(.clk(clk), 
+    DMEM DMEM_inst(.clk(clk), 
 			  .rst(rst_n), 
 			  .MemRead(MemRead),
 			  .MemWrite(MemWrite),
