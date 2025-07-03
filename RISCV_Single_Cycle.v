@@ -31,7 +31,7 @@ module RISCV_Single_Cycle (
                         .Jump(Jump), // Thêm tín hi?u Jump cho JAL/JALR
                         .branch_taken(branch_taken),
                         .next_PC(next_PC));
-    IMEM IMEM(.clk(clk),
+    IMEM IMEM_inst(.clk(clk),
               .rst(rst_n),
               .PC_Out(PC_Out), 
               .instruction(instruction));
