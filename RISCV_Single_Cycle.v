@@ -19,6 +19,13 @@ module RISCV_Single_Cycle (
     wire [1:0] ALUOp;
     wire [2:0] imm_sel;
 
+    assign rs1 = instruction[19:15];
+    assign rs2 = instruction[24:20];
+    assign rd  = instruction[11:7];
+    assign funct3 = instruction[14:12];
+    assign funct7 = instruction[31:25];
+    assign opcode = instruction[6:0];
+	
     PC PC(.clk(clk),
           .rst(rst_n),
           .next_PC(next_PC),
