@@ -3,7 +3,7 @@ module RegisterFile (
     input [4:0] addA, addB, addD,
     input [31:0] WB_out,
     input RegWrite,
-    output [31:0] dataA, dataB
+    output reg [31:0] dataA, dataB
 );
     logic [31:0] regs [0:31];
 
