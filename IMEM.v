@@ -1,6 +1,5 @@
-module IMEM (
-	
-	input [29:0] PC_Out,
+module IMEM (	
+    input [29:0] PC_Out,
     output [31:0] instruction
 );
     reg [31:0] memory [0:1023];
