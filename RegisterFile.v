@@ -9,8 +9,8 @@ module RegisterFile (
     logic [31:0] regs [0:31];
 
     // Khởi tạo thanh ghi khi reset
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
             for (int i = 0; i < 32; i++) begin
                 regs[i] <= 32'b0;
             end
