@@ -52,8 +52,7 @@ module RISCV_Single_Cycle (
                             .Jump(Jump), // Thêm Jump
                             .ALUOp(ALUOp),
                             .imm_sel(imm_sel));
-    RegisterFile reg_unit(.clk(clk),
-                          .rst(rst_n),
+    RegisterFile reg_unit(.clk(clk),                          
                           .addA(instruction[19:15]),
                           .addB(instruction[24:20]),
                           .addD(instruction[11:7]),
