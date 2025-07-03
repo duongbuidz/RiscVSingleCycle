@@ -1,7 +1,6 @@
 module RegisterFile (
     input clk,
-    input rst,
-    input [4:0] addA, addB, addD, dataD
+    input [4:0] addA, addB, addD,
     input [31:0] WB_out,
     input RegWrite,
     output [31:0] dataA, dataB
@@ -20,6 +19,6 @@ module RegisterFile (
     
     always_ff @(posedge clk) begin
         if (RegWrite && addD  != 0)
-            regs[addD] <= dataD;
+            regs[addD] <= WB_out;
     end
 endmodule
