@@ -79,19 +79,9 @@ module RISCV_Single_Cycle (
                           .funct3(instruction[14:12]),
                           .rs1_data(dataA), 
                           .rs2_data(dataB),
-                          .branch_taken(branch_taken));
-   /* DMEM DMEM(.clk(clk),               
-              .rst(rst),               
-              .MemRead(MemRead),           
-              .MemWrite(MemWrite),          
-              .address(alu_out[31:2]), // Byte-address to word-address
-              .write_data(dataB), 
-              .read_data(read_data)); */
-    DMEM DMEM_inst(.clk(clk), 
-			  .rst(rst_n), 
-			  .MemRead(MemRead),
-			  .MemWrite(MemWrite),
-			  .funct3(instruction[14:12]), 
+                          .branch_taken(branch_taken)); 
+    DMEM DMEM_inst(.clk(clk), 		
+			  .MemWrite(MemWrite),			   
 			  .address(alu_out), 
 			  .write_data(dataB),          
 			  .read_data(read_data));
