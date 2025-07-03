@@ -12,4 +12,3 @@ module DMEM (
 
     assign read_data = memory[address >> 2];   
 endmodule
-endmodule
