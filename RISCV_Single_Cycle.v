@@ -39,7 +39,7 @@ module RISCV_Single_Cycle (
                         .branch_taken(branch_taken),
                         .next_PC(next_PC));
     IMEM IMEM_inst(              
-              .PC_Out(PC_Out[31:2]), 
+              .addr(PC_Out[31:2]), 
               .instruction(instruction));
     ControlUnit ControlUnit (
                             .op(instruction[6:0]),
