@@ -12,12 +12,12 @@ module RegisterFile (
         for (int i = 0; i < 32; i++) regs[i] = 32'b0;
     end
    
-    always_comb begin
+    always(*) begin
         dataA = regs[addA];
         dataB = regs[addB];
     end   
     
-    always_ff @(posedge clk) begin
+    always@(posedge clk) begin
         if (RegWrite && addD  != 0)
             regs[addD] <= WB_out;
     end
