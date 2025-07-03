@@ -1,5 +1,5 @@
 module RISCV_Single_Cycle (
-    input clk, rst
+    input clk, rst_n
 );
 
     wire [31:0] instruction;
@@ -20,7 +20,7 @@ module RISCV_Single_Cycle (
     wire [2:0] imm_sel;
 
     PC PC(.clk(clk),
-          .rst(rst),
+          .rst(rst_n),
           .next_PC(next_PC),
           .PC_Out(PC_Out));
     PCAdder PCAdder(.PC_in(PC_Out),
@@ -32,7 +32,7 @@ module RISCV_Single_Cycle (
                         .branch_taken(branch_taken),
                         .next_PC(next_PC));
     IMEM IMEM(.clk(clk),
-              .rst(rst),
+              .rst(rst_n),
               .PC_Out(PC_Out), 
               .instruction(instruction));
     ControlUnit ControlUnit (
@@ -47,7 +47,7 @@ module RISCV_Single_Cycle (
                             .ALUOp(ALUOp),
                             .imm_sel(imm_sel));
     RegisterFile reg_unit(.clk(clk),
-                          .rst(rst),
+                          .rst(rst_n),
                           .addA(instruction[19:15]),
                           .addB(instruction[24:20]),
                           .addD(instruction[11:7]),
@@ -80,7 +80,7 @@ module RISCV_Single_Cycle (
               .write_data(dataB), 
               .read_data(read_data)); */
     DMEM DMEM(.clk(clk), 
-			  .rst(rst), 
+			  .rst(rst_n), 
 			  .MemRead(MemRead),
 			  .MemWrite(MemWrite),
 			  .funct3(instruction[14:12]), 
