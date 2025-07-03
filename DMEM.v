@@ -5,7 +5,7 @@ module DMEM (
 );
     reg [31:0] memory [0:1023]; // 256 word = 1024 byte
     always_ff @(posedge clk) begin
-        if (mem_write)
+        if (MemWrite)
             memory[address >> 2] <= write_data;  
     end
 
