@@ -4,6 +4,10 @@ module IMEM (
 );
     reg [31:0] memory [0:1023];
     initial begin
+    integer i;
+        for (i = 0; i < 1024; i = i + 1) begin
+            imem[i] = 32'b0;
+        end    
     imem[0] = 32'b0000000000000000000000000000000 ;       // nop
     imem[1] = 32'b0100000_00011_01000_000_00101_0110011;     // sub x5, x8, x3
     imem[2] = 32'b000000000010_10101_000_10110_0010011;    // addi x22, x21, 2
